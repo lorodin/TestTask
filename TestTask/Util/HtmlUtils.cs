@@ -11,7 +11,7 @@ namespace TestTask.Util
         private static string htmlPattern = @"<(.|\n)*?>";
         public static string ClearHtml(this string html)
         {
-            if (string.IsNullOrEmpty(html)) return "";
+            if (string.IsNullOrEmpty(html)) return html;
             return Regex.Replace(html, htmlPattern, string.Empty);
         }
 

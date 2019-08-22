@@ -137,9 +137,9 @@ namespace TestTask.Controllers
                 film.PosterURL = filmViewModel.PosterURL;
             }
 
-            film.Name = filmViewModel.Name.ClearHtml();
-            film.Director = filmViewModel.Director.ClearHtml();
-            film.Descrition = filmViewModel.Description.ClearHtml();
+            film.Name = HtmlUtils.ClearHtml(filmViewModel.Name);
+            film.Director = HtmlUtils.ClearHtml(filmViewModel.Director);
+            film.Descrition = HtmlUtils.ClearHtml(filmViewModel.Description);
             film.Year = filmViewModel.Year;
 
             filmsRepository.Save(film);
