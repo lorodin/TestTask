@@ -1,0 +1,24 @@
+﻿.poster {
+    height: 300px;
+    width: 100%;
+    float: left;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1em;
+}
+
+#remove-poster-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-weight: bold;
+}
+
+#remove-poster-btn:hover {
+    text-decoration: none;
+    opacity: 1;
+}

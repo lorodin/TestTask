@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNet.Identity
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Главная", "List", "Film")</li>
+    @if (Request.IsAuthenticated)
+    {
+        <li>
+            @Html.ActionLink("Создать фильм", "Create", routeValues: new { id = 0 })
+        </li>
+    }
+</ul>
+

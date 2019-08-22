@@ -1,0 +1,95 @@
+﻿@model TestTask.Models.CreateFilmViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (Model.Id == 0)
+{
+    <h2>Создание фильма</h2>
+}
+else
+{
+    <h2>Редактирование фильма</h2>
+}
+
+<hr />
+
+@using (Html.BeginForm("Create", "Film", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" id="poster-url" name="PosterURL" value="@Model.PosterURL" />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Director, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PosterFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="PosterFile" class="form-control" />
+                @Html.ValidationMessageFor(model => model.PosterFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.PosterURL))
+        {
+            <div id="preview-wrapper" class="col-md-offset-2 col-md-4 col-sm-12">
+                <div class="poster" style="background-image:url('@Url.Content(Model.PosterURL)')">
+                    <a id="remove-poster-btn" class="text-danger" href="javascript:(function(){document.getElementById('poster-url').setAttribute('value', '');
+                                                            document.getElementById('preview-wrapper').innerText = '';})()">
+                        Удалить
+                    </a>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку фильмов", "List")
+</div>
+
+@section Styles {
+    @Styles.Render("~/styles/film.create")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
