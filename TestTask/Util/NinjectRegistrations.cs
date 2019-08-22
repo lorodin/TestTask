@@ -12,6 +12,7 @@ namespace TestTask.Util
         public override void Load()
         {
             Bind<IFilmsRepository>().To<FilmsRepository>();
+            Bind<IFilesManager>().ToMethod(c => FilesManager.Instance);
         }
     }
 }

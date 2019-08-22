@@ -184,6 +184,7 @@
     <Compile Include="Models\PageInfoViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\FilesManager.cs" />
     <Compile Include="Util\HtmlUtils.cs" />
     <Compile Include="Util\NinjectRegistrations.cs" />
     <Compile Include="Util\ValidateImageAttribute.cs" />

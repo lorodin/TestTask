@@ -15,10 +15,11 @@ namespace TestTask.Controllers
     public class FilmController : Controller
     {
         private IFilmsRepository filmsRepository;
-
-        public FilmController(IFilmsRepository filmsRepository)
+        private IFilesManager filesManager; 
+        public FilmController(IFilmsRepository filmsRepository, IFilesManager filesManager)
         {
             this.filmsRepository = filmsRepository;
+            this.filesManager = filesManager;
         }
 
         public ActionResult Details(int? id)
@@ -112,25 +113,8 @@ namespace TestTask.Controllers
 
             if (filmViewModel.PosterFile != null)
             {
-                if (!string.IsNullOrEmpty(filmViewModel.PosterURL))
-                {
-                    var oldFileName = Server.MapPath(filmViewModel.PosterURL);
-                    if (System.IO.File.Exists(oldFileName))
-                    {
-                        System.IO.File.Delete(oldFileName);
-                    }
-                }
-
-                string dir = "~/Files/" + DateTime.Now.ToString("yyyyMMdd") + "/";
-                string serverDir = Server.MapPath(dir);
-                if (!Directory.Exists(serverDir))
-                {
-                    Directory.CreateDirectory(serverDir);
-                }
-                
-                string fileName = Guid.NewGuid() + Path.GetExtension(filmViewModel.PosterFile.FileName);
-                filmViewModel.PosterFile.SaveAs(serverDir + fileName);
-                film.PosterURL = dir + fileName;
+                filesManager.Delete(filmViewModel.PosterURL);
+                film.PosterURL = filesManager.SavePostFile(filmViewModel.PosterFile);
             }
             else
             {
