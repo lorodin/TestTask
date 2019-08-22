@@ -20,6 +20,7 @@ else
     @Html.AntiForgeryToken()
     <input type="hidden" name="Id" value="@Model.Id" />
     <input type="hidden" id="poster-url" name="PosterURL" value="@Model.PosterURL" />
+    @Html.EditorFor(model => model.DeletePoster)
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

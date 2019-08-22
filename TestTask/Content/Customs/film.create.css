@@ -22,3 +22,7 @@
     text-decoration: none;
     opacity: 1;
 }
+
+#DeletePoster {
+    display: none;
+}

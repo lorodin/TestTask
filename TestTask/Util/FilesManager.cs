@@ -9,6 +9,7 @@ namespace TestTask.Util
         void Delete(string fileName);
         string SavePostFile(HttpPostedFileWrapper file);
         string GetLocalFileName(string fileName);
+        string GetAbsoluteFileName(string fileName);
     }
     public class FilesManager : IFilesManager
     {
@@ -40,7 +41,7 @@ namespace TestTask.Util
                 return;
             }
 
-            string fileName = GetLocalFileName(fileUrl);
+            string fileName = GetAbsoluteFileName(fileUrl);
 
             if (File.Exists(fileName))
             {
@@ -84,6 +85,24 @@ namespace TestTask.Util
                 return "~/Files" + fileName;
             }
             return "~/Files/" + fileName; 
+        }
+
+        public string GetAbsoluteFileName(string localFileName)
+        {
+            if (localFileName.StartsWith(assetsPath))
+            {
+                return localFileName;
+            }
+
+            if (localFileName.StartsWith("~/Files/"))
+            {
+                localFileName = localFileName.Replace("~/Files/", "/");
+            } else if (localFileName.StartsWith("/Files/"))
+            {
+                localFileName = localFileName.Replace("/Files/", "/");
+            }
+
+            return assetsPath + localFileName;
         }
     }
 }

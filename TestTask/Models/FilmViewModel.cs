@@ -40,6 +40,9 @@ namespace TestTask.Models
 
         public string PosterURL { get; set; }
 
+        [DefaultValue(false)]
+        public bool DeletePoster { get; set; }
+
         public static CreateFilmViewModel Create(Film film)
         {
             return new CreateFilmViewModel

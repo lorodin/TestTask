@@ -114,7 +114,14 @@ namespace TestTask.Controllers
             }
             else
             {
-                film.PosterURL = filmViewModel.PosterURL;
+                if (filmViewModel.DeletePoster)
+                {
+                    filesManager.Delete(filmViewModel.PosterURL);
+                }
+                else
+                {
+                    film.PosterURL = null;
+                }
             }
 
             film.Name = HtmlUtils.ClearHtml(filmViewModel.Name);
