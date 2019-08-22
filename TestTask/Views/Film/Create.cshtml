@@ -66,8 +66,7 @@ else
         {
             <div id="preview-wrapper" class="col-md-offset-2 col-md-4 col-sm-12">
                 <div class="poster" style="background-image:url('@Url.Content(Model.PosterURL)')">
-                    <a id="remove-poster-btn" class="text-danger" href="javascript:(function(){document.getElementById('poster-url').setAttribute('value', '');
-                                                            document.getElementById('preview-wrapper').innerText = '';})()">
+                    <a id="remove-poster-btn" class="text-danger" href="javascript:removePoster()">
                         Удалить
                     </a>
                 </div>
@@ -92,4 +91,5 @@ else
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/scripts/film.create")
 }

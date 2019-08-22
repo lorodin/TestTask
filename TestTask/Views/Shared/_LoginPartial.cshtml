@@ -6,7 +6,7 @@
         <input type="hidden" name="returnURL" />
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Вы вошли как: " + User.Identity.GetUserName(), "My", "Film")
+                <a href="#">Вы вошли как: @User.Identity.GetUserName()</a>
             </li>
             <li>
                 <a href="javascript:document.getElementById('logoutForm').submit()">Выход</a>

@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace TestTask
 {
@@ -26,6 +25,10 @@ namespace TestTask
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            // Customs Scripts
+            bundles.Add(new ScriptBundle("~/scripts/film.create").Include("~/Scripts/Customs/film.create.js"));
+
+            // Customs Styles
             bundles.Add(new StyleBundle("~/styles/films.list").Include("~/Content/Customs/films.list.css"));
             bundles.Add(new StyleBundle("~/styles/film.create").Include("~/Content/Customs/film.create.css"));
             bundles.Add(new StyleBundle("~/styles/film.details").Include("~/Content/Customs/film.details.css"));

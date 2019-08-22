@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Drawing.Imaging;
-using System.Linq;
 using System.Web;
 using TestTask.Data.Models;
 using TestTask.Util;
